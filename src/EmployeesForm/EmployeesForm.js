@@ -65,7 +65,7 @@ function EmployeesForm() {
                     setsalry("");
                     Swal.fire({
                         title: "Congratulation",
-                        text: "One Rceord Added Successfully",
+                        text: "One Rceord Added Successfully 👍",
                         icon: "success"
                     });
                     getEmployeeData();
@@ -73,9 +73,28 @@ function EmployeesForm() {
 
             } catch (error) {
                 console.log(error)
-            }finally{
+            } finally {
                 setloading(false)
             }
+        }
+    }
+
+    const handleDelete = async (id) => {
+        try {
+            setloading(true);
+            var res = await axios.delete("https://employees-api-eight.vercel.app/deleteemployeesrecord/" + id);
+            if (res.status === 200) {
+                Swal.fire({
+                    title: "Delete",
+                    text: "One Rceord Deleted Successfully",
+                    icon: "info"
+                });
+            }
+
+        } catch (error) {
+            console.log(error);
+        }finally{
+            setloading(false);
         }
     }
     return (
@@ -145,6 +164,7 @@ function EmployeesForm() {
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Salary</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -155,6 +175,7 @@ function EmployeesForm() {
                                                 <td>{item.Name}</td>
                                                 <td>{item.LastName}</td>
                                                 <td>{item.Salary}</td>
+                                                <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
                                             </tr>
                                         )
                                     }
