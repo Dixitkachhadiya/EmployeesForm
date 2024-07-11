@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* EmployeesDetails */
+
+/* ResponsiveTable.css */
+.table-responsive {
+  margin: 20px 0;
+}
+
+.custom-table th,
+.custom-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  .custom-table th,
+  .custom-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .custom-table th,
+  .custom-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
