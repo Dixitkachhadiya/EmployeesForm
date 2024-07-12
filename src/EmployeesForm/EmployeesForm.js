@@ -89,73 +89,72 @@ function EmployeesForm() {
                     text: "One Rceord Deleted Successfully",
                     icon: "info"
                 });
+                getEmployeeData();
             }
 
         } catch (error) {
             console.log(error);
-        }finally{
+        } finally {
             setloading(false);
         }
     }
     return (
         <>
+            {
+                loading ? <Container id='loder-container'>
+                    <div className="loader">
+                    <span className="l">L</span>
+                    <span className="o">o</span>
+                    <span className="a">a</span>
+                    <span className="d">d</span>
+                    <span className="i">i</span>
+                    <span className="n">n</span>
+                    <span className="g">g</span>
+                    <span className="d1">.</span>
+                    <span className="d2">.</span>
+                </div>
+                </Container> :
+                    <Container>
+                        <Row>
+                            <Col md={12}>
+                                <Form>
+                                    <Form.Group md={6}>
+                                        <Form.Label id='form-lable'>First Name</Form.Label>
+                                        <Form.Control
+                                            type='text'
+                                            name='firstName'
+                                            placeholder='Enter Your First Name'
+                                            value={firstName}
+                                            onChange={(e) => setFirstname(e.target.value)}
+                                        >
+                                        </Form.Control>
+                                        <br></br>
+                                        <Form.Label id='form-lable'>Last Name</Form.Label>
+                                        <Form.Control
+                                            type='text'
+                                            name='lastName'
+                                            placeholder='Enter Your Last Name'
+                                            value={lastname}
+                                            onChange={(e) => setlastname(e.target.value)}
+                                        >
+                                        </Form.Control>
+                                        <br></br>
+                                        <Form.Label id='form-lable'>Salary</Form.Label>
+                                        <Form.Control
+                                            type='number'
+                                            name='Salary'
+                                            placeholder='Enter Your Salary Name'
+                                            value={salary}
+                                            onChange={(e) => setsalry(e.target.value)}
+                                        >
+                                        </Form.Control>
+                                        <br></br>
+                                        <Button onClick={handleSubmit}>Submit</Button>
+                                    </Form.Group>
 
-            <Container>
-                <Row>
-                    <Col md={12}>
-                        <Form>
-                            <Form.Group md={6}>
-                                <Form.Label id='form-lable'>First Name</Form.Label>
-                                <Form.Control
-                                    type='text'
-                                    name='firstName'
-                                    placeholder='Enter Your First Name'
-                                    value={firstName}
-                                    onChange={(e) => setFirstname(e.target.value)}
-                                >
-                                </Form.Control>
-                                <br></br>
-                                <Form.Label id='form-lable'>Last Name</Form.Label>
-                                <Form.Control
-                                    type='text'
-                                    name='lastName'
-                                    placeholder='Enter Your Last Name'
-                                    value={lastname}
-                                    onChange={(e) => setlastname(e.target.value)}
-                                >
-                                </Form.Control>
-                                <br></br>
-                                <Form.Label id='form-lable'>Salary Name</Form.Label>
-                                <Form.Control
-                                    type='number'
-                                    name='Salary'
-                                    placeholder='Enter Your Salary Name'
-                                    value={salary}
-                                    onChange={(e) => setsalry(e.target.value)}
-                                >
-                                </Form.Control>
-                                <br></br>
-                                <Button onClick={handleSubmit}>Submit</Button>
-                            </Form.Group>
-
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
-
-            <Container>
-                {
-                    loading ? <div className="loader">
-                        <span className="l">L</span>
-                        <span className="o">o</span>
-                        <span className="a">a</span>
-                        <span className="d">d</span>
-                        <span className="i">i</span>
-                        <span className="n">n</span>
-                        <span className="g">g</span>
-                        <span className="d1">.</span>
-                        <span className="d2">.</span>
-                    </div> :
+                                </Form>
+                            </Col>
+                        </Row>
                         <div className="table-responsive">
                             <Table striped bordered hover className="custom-table">
                                 <thead>
@@ -182,9 +181,8 @@ function EmployeesForm() {
                                 </tbody>
                             </Table>
                         </div>
-                }
-            </Container>
-
+                    </Container>
+            }
         </>
     )
 }
